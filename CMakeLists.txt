@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(floam)
 
 set(CMAKE_BUILD_TYPE "Release")
-set(CMAKE_CXX_FLAGS "-std=c++11")
+set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -Wall -g")
 
 find_package(catkin REQUIRED COMPONENTS
@@ -31,18 +31,19 @@ endif()
 find_package(PCL REQUIRED)
 find_package(Ceres REQUIRED)
 
+message(STATUS "Ceres ${CERES_LIBRARIES}")
+
 include_directories(
   include
   ${catkin_INCLUDE_DIRS} 
   ${PCL_INCLUDE_DIRS}
-  ${CERES_INCLUDE_DIRS}
   ${EIGEN3_INCLUDE_DIRS}
 )
 
 link_directories(
   include
   ${PCL_LIBRARY_DIRS}
-  ${CERES_LIBRARY_DIRS}
+  ${CERES_LIBRARIES}
 )
 
 
